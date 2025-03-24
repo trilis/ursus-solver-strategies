@@ -28,17 +28,12 @@ Import ListNotations.
 Local Open Scope list_scope.
 
 Definition roots_eval : Datatypes.list string := [
-                                       "constructor";
-                                       "exchangeToken";
-                                       "sendTransaction";
-                                       "submitTransaction";
-                                       "confirmTransaction";
-                                       "submitUpdate";
-                                       "confirmUpdate";
-                                       "executeUpdate"].
+                                       "hash_1"
+].
 
 Definition roots_exec : Datatypes.list string := [
-                                       ].
+                                        "hash_1"
+].
 
 
 Elpi GenerateFunction SimpleContract "Run1" "Functions1" .
