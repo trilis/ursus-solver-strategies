@@ -1,0 +1,17 @@
+*.sol_json.ast
+_build/
+.lia.cache
+Execs/
+Evals/
+Functions/
+_Tactics/
+Tactics/
+_FakeProofs/
+ProofsHeader.v
+CommonHeader.v
+build.sh
+Common.v
+Functions*.v
+res.log
+.DS_Store
+pwd.tmp

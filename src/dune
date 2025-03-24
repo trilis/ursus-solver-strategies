@@ -1,0 +1,7 @@
+
+(coq.theory
+ (name MasterExperiments)
+ (package trilis-master) 
+)
+
+(include_subdirs qualified)
