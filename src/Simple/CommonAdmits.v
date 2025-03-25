@@ -15,11 +15,11 @@ Require Import TVMModel.Base.Definitions.TVMBitString.
 Require Import SpecLang.
 Require Import CommonProofs.
 
-Require Import SimpleContract.SimpleContract.
-Import SimpleContract.
+Require Import Simple.Simple.
+Import Simple.
 
-Require Import SimpleContract.Common.
-Require Import SimpleContract.CommonContractTactics.
+Require Import Simple.Common.
+Require Import Simple.CommonContractTactics.
 
 Import MonadNotation.
 Local Open Scope monad_scope.
