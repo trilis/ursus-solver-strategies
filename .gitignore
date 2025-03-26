@@ -1,6 +1,7 @@
 *.sol_json.ast
 _build/
 .lia.cache
+.nia.cache
 Execs/
 Evals/
 Functions/
@@ -15,3 +16,5 @@ Functions*.v
 res.log
 .DS_Store
 pwd.tmp
+output.txt
+*.png
