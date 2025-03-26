@@ -33,6 +33,11 @@ strategies = system("awk '{print $2}' timing_data.dat | sort -u")
 n_datasets = words(datasets)
 n_strategies = words(strategies)
 
+# Set line styles
+set style line 1 lc rgb '#0060ad' lt 1 lw 2 pt 7 ps 1.5
+set style line 2 lc rgb '#dd181f' lt 1 lw 2 pt 7 ps 1.5
+set style line 3 lc rgb '#00ad60' lt 1 lw 2 pt 7 ps 1.5
+
 # Create a plot for each dataset
 do for [i=1:n_datasets] {
     dataset = word(datasets, i)
@@ -46,9 +51,10 @@ do for [i=1:n_datasets] {
     sizes = system(sprintf("awk '$1==\"%s\" {print $3}' timing_data.dat | sort -n | uniq", dataset))
     n_sizes = words(sizes)
     
+    set datafile missing "NaN"
     # Create a plot with a line for each strategy
     plot for [j=1:n_strategies] \
-            'timing_data.dat' using (strcol(1) eq dataset && strcol(2) eq word(strategies, j) ? $3 : 1/0):4 \
+            'timing_data.dat' using (strcol(1) eq dataset && strcol(2) eq word(strategies, j) ? $3 : NaN):4 \
             title word(strategies, j) \
             with linespoints
 }

@@ -29,5 +29,5 @@ Lemma hash_10_bottom_up_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   time hash_10_start.
   destruct_ledger ll.
-  timeout 300 time "[simple][bottomup][10]" bottom_up_goal_solver.
+  time "[simple][bottomup][10]" timeout 300 bottom_up_goal_solver.
 Time Qed.
