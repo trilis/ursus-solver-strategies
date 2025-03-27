@@ -56,7 +56,7 @@ do for [i=1:n_datasets] {
     plot for [j=1:n_strategies] \
             'timing_data.dat' using (strcol(1) eq dataset && strcol(2) eq word(strategies, j) ? $3 : NaN):4 \
             title word(strategies, j) \
-            with linespoints
+            with linespoints ls j
 }
 EOF
 

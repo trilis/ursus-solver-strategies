@@ -1,7 +1,7 @@
-Require Import Simple.Tactics.hash_3.
+Require Import Recursion.Tactics.hash_3.
 
 Set Keyed Unification.
-SetDefaultOpaques "Simple".
+SetDefaultOpaques "Recursion".
 Opaque N.mul N.modulo.
 Opaque arrLookup.
 
@@ -14,23 +14,23 @@ Defined.
 Lemma hash_3_top_solver_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time prepare_all ll P.
-  compute_destructed_ledgers loc_.
-  time "[simple][topdown][3]" top_down_solver.
+  time continue_all @hash_2 @hash_1.
+  destruct_ledger ll.
+  time "[recursion][topdown][3]" top_down_solver.
 Time Qed.
 
 Lemma hash_3_let_form_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time prepare_all ll P.
-  compute_destructed_ledgers loc_.
-  time "[simple][letform][3]" let_form_solver.
+  time continue_all @hash_2 @hash_1.
+  destruct_ledger ll.
+  time "[recursion][letform][3]" let_form_solver.
 Time Qed.
 
 Lemma hash_3_bottom_up_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time prepare_all ll P.
-  compute_destructed_ledgers loc_.
-  time "[simple][bottomup][3]" timeout 300 bottom_up_goal_solver.
+  time continue_all @hash_2 @hash_1.
+  destruct_ledger ll.
+  time "[recursion][bottomup][3]" timeout 300 bottom_up_goal_solver.
 Time Qed.

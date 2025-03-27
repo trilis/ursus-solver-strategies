@@ -35,6 +35,8 @@ Local Open Scope N_scope.
 
 Ursus Definition hash_1: UExpression PhantomType false.
 {
+    ::// m_hash := {0}.
+    ::// m_current_power := {1}.
     ::// m_hash := (m_hash + m_string[[{0}]] * m_current_power) % m_modulo |.
 }
 return.
