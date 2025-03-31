@@ -1,5 +1,4 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import UMLang.ExecGenerator.
 
 
 Definition unMaybe {X}`{XDefault X} (x: XMaybe X) :=

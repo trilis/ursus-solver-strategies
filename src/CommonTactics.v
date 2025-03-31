@@ -1,10 +1,5 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import UMLang.ExecGenerator.
-Require Import UrsusContractCreator.IdentParsing.
-Require Import UrsusContractCreator.StringHelpers.
-Require Import UrsusLibExecs.All.
-
-Require Export UrsusProofs.CommonTactics.
+Require Import SpecLang.
 
 Tactic Notation "subst_needed" "in" hyp(H) :=
   idtac "substing needed in" H;
@@ -33,19 +28,7 @@ Ltac subst_needed :=
         subst y
     end.
 
-
-
-(* TODO: still cannot move it somewhere *)
-Require Import UrsusEnvironment.Solidity.current.Environment.
-
-Require Import TVMModel.Notations.Loadable.
-Require Import TVMModel.Notations.Storeable.
-Require Import TVMModel.Base.Proofs.EncodeDecode.
-Require Import TVMModel.Base.Definitions.TVMBitString.
-
-Require Import SpecLang.
-
-Ltac process_wellformed' Ledger C x prf :=
+(* Ltac process_wellformed' Ledger C x prf :=
   multidestruct C;
   subst x; (* the term structured after decomposition *)
   match goal with
@@ -65,7 +48,7 @@ Ltac process_wellformed' Ledger C x prf :=
                               end   
                           end
   | _ => idtac "no decode found"
-  end.
+  end. *)
 
 Module Type WithLedger.
 
@@ -87,8 +70,8 @@ Ltac equalify_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in e
 Ltac unify_condition := let Ledger' := eval cbv delta [Ledger] in Ledger in unify_condition' Ledger'.
 Ltac equalify_particular_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in equalify_particular_arguments' Ledger'.
 Ltac find_destructed_ledger_subst_compute := let Ledger' := eval cbv delta [Ledger] in Ledger in find_destructed_ledger_subst_compute' Ledger'.
-Ltac process_wellformed := let Ledger' := eval cbv delta [Ledger] in Ledger in process_wellformed' Ledger'.
-
+(* Ltac process_wellformed := let Ledger' := eval cbv delta [Ledger] in Ledger in process_wellformed' Ledger'.
+ *)
 Ltac process_multiexists := let Ledger' := eval cbv delta [Ledger] in Ledger in process_multiexists' Ledger'.
 
 End ContractTactics.
@@ -108,7 +91,7 @@ Ltac top_down_solver :=
           | _ => idtac
       end); 
       match type of t with
-        | ExecGenDefs.ULValue _ => subst y
+        | ULValue _ => subst y
         | _ =>
           lazy in H; subst y
       end

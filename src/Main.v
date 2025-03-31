@@ -1,14 +1,9 @@
+Require Import UrsusEnvironment.Solidity.current.Environment.
+
 Require Import Simple.Simple.
 Require Import If.If.
 Require Import Recursion.Recursion.
 Require Import IfAndRecursion.IfAndRecursion.
-
-Require Import UrsusEnvironment.Solidity.current.Environment.
-
-Require Import UrsusContractCreator.UrsusEndContract.
-Require Import UrsusContractCreator.UrsusRunContract.
-Require Export UrsusContractCreator.UrsusStartContract.
-Require Import UrsusContractCreator.Templates.
 
 Section Main.
 
