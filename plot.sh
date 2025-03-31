@@ -37,6 +37,7 @@ n_strategies = words(strategies)
 set style line 1 lc rgb '#0060ad' lt 1 lw 2 pt 7 ps 1.5
 set style line 2 lc rgb '#dd181f' lt 1 lw 2 pt 7 ps 1.5
 set style line 3 lc rgb '#00ad60' lt 1 lw 2 pt 7 ps 1.5
+set style line 4 lc rgb '#800080' lt 1 lw 2 pt 7 ps 1.5
 
 # Create a plot for each dataset
 do for [i=1:n_datasets] {

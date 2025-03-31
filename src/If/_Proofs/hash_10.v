@@ -1,7 +1,6 @@
-Require Import Simple.Tactics.hash_10.
+Require Import If.Tactics.hash_10.
 
-Set Keyed Unification.
-SetDefaultOpaques "Simple".
+SetDefaultOpaques "If".
 Opaque N.mul N.modulo.
 Opaque arrLookup.
 
@@ -14,30 +13,26 @@ Defined.
 Lemma hash_10_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   time hash_10_start.
+  time continue_all @hash_9 @hash_8 @hash_7.
   time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  time "[simple][topdown][10]" top_down_solver.
+  time "[recursion][topdown][10]" top_down_solver.
 Time Qed.
 
 Lemma hash_10_let_form_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   time hash_10_start.
+  time continue_all @hash_9 @hash_8 @hash_7 @hash_6 @hash_5 @hash_4 @hash_3 @hash_2 @hash_1.
   time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  time "[simple][letform][10]" let_form_solver.
+  time "[recursion][letform][10]" let_form_solver.
 Time Qed.
 
 Lemma hash_10_bottom_up_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   time hash_10_start.
+  time continue_all @hash_9 @hash_8 @hash_7 @hash_6 @hash_5 @hash_4 @hash_3 @hash_2 @hash_1.
   time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  try time "[simple][bottomup][10]" timeout 300 bottom_up_goal_solver; abort.
-Time Qed.
-
-Lemma hash_10_new_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
-  start_proof.
-  time hash_10_start.
-  destruct_ledger ll.
-  time "[simple][newtopdown][10]" new_top_down_solver.
+  timeout 300 time "[recursion][bottomup][10]" bottom_up_goal_solver.
 Time Qed.

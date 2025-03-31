@@ -34,3 +34,11 @@ Lemma hash_4_bottom_up_prf (ll : LedgerLRecord rec) : hash_4_correct_def ll.
   compute_destructed_ledgers loc_.
   time "[simple][bottomup][4]" timeout 300 bottom_up_goal_solver.
 Time Qed.
+
+Lemma hash_4_new_top_solver_prf (ll : LedgerLRecord rec) : hash_4_correct_def ll.
+  start_proof.
+  time hash_4_start.
+  time prepare_all ll P.
+  compute_destructed_ledgers loc_.
+  time "[simple][newtopdown][4]" new_top_down_solver.
+Time Qed.

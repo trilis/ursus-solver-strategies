@@ -76,6 +76,30 @@ End WithLedger.
 Module ContractTactics (WL: WithLedger).
 Import WL.
 
+
+Ltac new_top_down_solver' Ledger :=
+  clear_unneeded_hyps; repeat match reverse goal with 
+      | H: ?y = ?t |- _ =>
+      idtac y; (match t with 
+          | if ?b then _ else _ => destruct b
+          | _ => idtac
+      end); 
+      (match type of y with
+        | Ledger => idtac "LEDGER"; lazy in H; subst y
+        | ULValue _ => idtac "ULVALUE"; subst y
+        | _ =>
+      match reverse goal with 
+        | H2: ?y2 = ?t2 |- _ =>
+          match t2 with
+            | context[y] => (rewrite H in H2; clear H; clear y; idtac "EASY") ||
+              (lazy in H; subst y)
+            | _ => fail
+          end
+      end
+      end) || (lazy in H; subst y)
+  end; lazy; auto.
+
+Ltac new_top_down_solver := let Ledger' := eval cbv delta [Ledger] in Ledger in new_top_down_solver' Ledger'.
 Ltac bottom_up_goal_solver := let Ledger' := eval cbv delta [Ledger] in Ledger in bottom_up_goal_solver' Ledger'.
 Ltac process_message_flags := let Ledger' := eval cbv delta [Ledger] in Ledger in process_message_flags' Ledger'.
 Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
@@ -114,8 +138,8 @@ Ltac top_down_solver :=
       end
   end; lazy; auto.
 
-Ltac convert_to_let_form := 
-repeat match goal with 
+Ltac let_form_solver := 
+clear_unneeded_hyps; repeat match goal with 
     | H: ?y = ?t |- _ =>
     is_var y; 
     assert_fails (idtac; multimatch goal with 
@@ -125,11 +149,14 @@ repeat match goal with
                 | _ => fail
             end
     end);
-    let x := fresh "x" in
-    set (x := t); replace y with x in *; clear H
-end.  
-Ltac let_form_solver := clear_unneeded_hyps; convert_to_let_form; lazy; auto.
+    match t with 
+    | if ?b then _ else _ => lazy in H; destruct b
+    | _ =>
+        let x := fresh "x" in
+        set (x := t); replace y with x in *; clear H
+    end
+end; lazy; auto.  
 
-Axiom false: False.
+Axiom false_: False.
 
-Ltac abort := exfalso; exact false.
+Ltac abort := exfalso; exact false_.

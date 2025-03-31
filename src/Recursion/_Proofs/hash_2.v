@@ -15,8 +15,8 @@ Lemma hash_2_top_solver_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
   start_proof.
   time hash_2_start.
   time continue_all @hash_1.
-  destruct_ledger ll.
-
+  time prepare_all ll P.
+  compute_destructed_ledgers loc_.
   time "[recursion][topdown][2]" top_down_solver.
 Time Qed.
 
@@ -24,7 +24,8 @@ Lemma hash_2_let_form_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
   start_proof.
   time hash_2_start.
   time continue_all @hash_1.
-  destruct_ledger ll.
+  time prepare_all ll P.
+  compute_destructed_ledgers loc_.
   time "[recursion][letform][2]" let_form_solver.
 Time Qed.
 
@@ -32,6 +33,7 @@ Lemma hash_2_bottom_up_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
   start_proof.
   time hash_2_start.
   time continue_all @hash_1.
-  destruct_ledger ll.
-  time "[recursion][bottomup][2]" timeout 300 bottom_up_goal_solver.
+  time prepare_all ll P.
+  compute_destructed_ledgers loc_.
+  timeout 300 time "[recursion][bottomup][2]" bottom_up_goal_solver.
 Time Qed.
