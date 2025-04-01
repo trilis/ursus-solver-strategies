@@ -38,6 +38,7 @@ Time Qed.
 Lemma hash_10_new_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   time hash_10_start.
-  destruct_ledger ll.
+  time prepare_all ll P.
+  compute_destructed_ledgers loc_.
   time "[simple][newtopdown][10]" new_top_down_solver.
 Time Qed.
