@@ -1,10 +1,4 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-
-Require Import UrsusContractCreator.UrsusEndContract.
-Require Import UrsusContractCreator.UrsusRunContract.
-Require Export UrsusContractCreator.UrsusStartContract.
-Require Import UrsusContractCreator.Templates.
-
 Require Import If.If.
 
 Section Run.

@@ -1,7 +1,4 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import UrsusEnvironment.Solidity.current.LocalGenerator.
-Require Import UrsusQC.CommonQCEnvironment.
-Require Import UrsusContractCreator.UrsusFieldUtils.
 Require Import UrsusContractCreator.BaseContracts.EverContract.
 Set UrsusPrefixTactic "PrefixOnlyURValue".
 

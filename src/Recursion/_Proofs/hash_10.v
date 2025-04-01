@@ -10,6 +10,13 @@ ll | "m_string" "m_modulo" "m_multiplier" -> l1 | "m_hash".
 con (m_hash = fst (reference_hash_implementation 10%nat m_string (uint2N m_multiplier) (uint2N m_modulo))).
 Defined.
 
+(* Set Debug "tactic-unification".
+(* Opaque hash_10 hash_9 hash_8 hash_7 hash_6 hash_5 hash_4 hash_3 hash_2 hash_1.
+Opaque hash_10_cbv_0_exec hash_9_cbv_0_exec hash_8_cbv_0_exec hash_7_cbv_0_exec hash_6_cbv_0_exec hash_5_cbv_0_exec hash_4_cbv_0_exec hash_3_cbv_0_exec hash_2_cbv_0_exec hash_1_cbv_0_exec.
+Opaque exec_state eval_state. *)
+Fail Timeout 1
+Check __exec (f:=@hash_10). *)
+
 Lemma hash_10_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   start_proof.
   Print Instances ExecsIndex.
@@ -20,10 +27,14 @@ Lemma hash_10_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   #[local] Hint Opaque _ex_hash_10_cbv : typeclass_instances.
   Set Typeclasses Debug Verbosity 2.
   time hash_10_start.
-  time continue_all @hash_9 @hash_8 @hash_7.
+  time continue_all @hash_9 @hash_8 @hash_7 @hash_6 
+                    @hash_5 @hash_4 @hash_3 @hash_2 
+                    @hash_1.
+  (* destruct_ledger ll. *)
   time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  time "[recursion][topdown][10]" top_down_solver.
+
+  time "[recursion][topdown][10]" top_down_solver. (* 46.378 secs *)
 Time Qed.
 
 Lemma hash_10_let_form_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
