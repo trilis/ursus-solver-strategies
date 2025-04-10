@@ -63,8 +63,17 @@ Import WL.
 Ltac new_top_down_solver' Ledger :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
+      assert_fails (idtac; multimatch goal with 
+          | H2: ?y2 = _ |- _ => 
+              match t with 
+                  | context[y2] => idtac
+                  | _ => fail
+              end
+      end);
       idtac y; (match t with 
-          | if ?b then _ else _ => destruct b
+          | if ?b then _ else _ => lazy in H; match reverse goal with
+            | H' : y = if ?b' then _ else _ |- _ => destruct b'
+            end
           | _ => idtac
       end); 
       (match type of y with
@@ -101,7 +110,7 @@ Ltac process_multiexists := let Ledger' := eval cbv delta [Ledger] in Ledger in 
 End ContractTactics.
 
 Ltac top_down_solver :=
-  clear_unneeded_hyps; repeat match goal with 
+  clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       assert_fails (idtac; multimatch goal with 
           | H2: ?y2 = _ |- _ => 
@@ -122,7 +131,7 @@ Ltac top_down_solver :=
   end; lazy; auto.
 
 Ltac let_form_solver := 
-clear_unneeded_hyps; repeat match goal with 
+clear_unneeded_hyps; repeat match reverse goal with 
     | H: ?y = ?t |- _ =>
     is_var y; 
     assert_fails (idtac; multimatch goal with 
@@ -133,12 +142,18 @@ clear_unneeded_hyps; repeat match goal with
             end
     end);
     match t with 
-    | if ?b then _ else _ => lazy in H; destruct b
+    | if ?b then _ else _ => 
+      let b' := fresh "b'" in
+      let Heqb' := fresh "Heqb'" in
+      remember b as b' eqn:Heqb'; lazy in Heqb'; 
+      match type of Heqb' with
+        | b' = ?t => destruct t 
+      end; subst b'
     | _ =>
         let x := fresh "x" in
         set (x := t); replace y with x in *; clear H
     end
-end; lazy; auto.  
+end; lazy; auto. 
 
 Axiom false_: False.
 

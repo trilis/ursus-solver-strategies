@@ -1,7 +1,7 @@
-Require Import If.Tactics.hash_1.
+Require Import IfAndRecursion.Tactics.hash_1.
 
 Set Keyed Unification.
-SetDefaultOpaques "If".
+SetDefaultOpaques "IfAndRecursion".
 Opaque N.mul N.modulo.
 Opaque arrLookup.
 
@@ -19,7 +19,7 @@ Lemma hash_1_top_solver_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][topdown][1]" top_down_solver; abort.
+  try timeout 300 time "[if&recursion][topdown][1]" top_down_solver.
 Time Qed.
 
 Lemma hash_1_let_form_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
@@ -30,7 +30,7 @@ Lemma hash_1_let_form_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][letform][1]" let_form_solver; abort.
+  try timeout 300 time "[if&recursion][letform][1]" let_form_solver.
 Time Qed.
 
 Lemma hash_1_bottom_up_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
@@ -41,7 +41,7 @@ Lemma hash_1_bottom_up_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][bottomup][1]" bottom_up_goal_solver'; abort.
+  try timeout 300 time "[if&recursion][bottomup][1]" bottom_up_goal_solver'.
 Time Qed.
 
 Lemma hash_1_new_top_solver_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll.
@@ -52,5 +52,5 @@ Lemma hash_1_new_top_solver_prf (ll : LedgerLRecord rec) : hash_1_correct_def ll
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][newtopdown][1]" new_top_down_solver; abort.
+  try timeout 300 time "[if&recursion][newtopdown][1]" new_top_down_solver.
 Time Qed.

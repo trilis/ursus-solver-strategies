@@ -16,7 +16,7 @@ Record Contract := {
     m_modulo: uint64;
     m_current_power: uint64;
     m_hash: uint64;
-    m_should_exit: uint64
+    m_should_exit: bool
 }.
 SetUrsusOptions.
 
@@ -34,8 +34,11 @@ Local Open Scope N_scope.
 
 Ursus Definition hash_1: UExpression PhantomType true.
 {
+    ::// m_hash := {0}.
+    ::// m_current_power := {1}.
+    ::// m_should_exit := {false}.
     ::// if (m_string[[{0}]] == {0}) then { 
-        m_should_exit := {1}; exit_
+        m_should_exit := {true}; exit_
     }.
     ::// m_hash := (m_hash + m_string[[{0}]] * m_current_power) % m_modulo |.
 }
@@ -46,8 +49,11 @@ Sync.
 Ursus Definition hash_2: UExpression PhantomType true.
 {
     ::// hash_1().
-    ::// if (m_string[[{1}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_
+    ::// if (m_string[[{1}]] == {0}) then { 
+        m_should_exit := {true}; exit_
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{1}]] * m_current_power) % m_modulo |.
@@ -59,8 +65,11 @@ Sync.
 Ursus Definition hash_3: UExpression PhantomType true.
 {
     ::// hash_2().
-    ::// if (m_string[[{2}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_
+    ::// if (m_string[[{2}]] == {0}) then { 
+        m_should_exit := {true}; exit_
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{2}]] * m_current_power) % m_modulo |.
@@ -72,8 +81,11 @@ Sync.
 Ursus Definition hash_4: UExpression PhantomType true.
 {
     ::// hash_3().
-    ::// if (m_string[[{3}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{3}]] == {0}) then { 
+        m_should_exit := {true}; exit_
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{3}]] * m_current_power) % m_modulo |.
@@ -85,8 +97,11 @@ Sync.
 Ursus Definition hash_5: UExpression PhantomType true.
 {
     ::// hash_4().
-    ::// if (m_string[[{4}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_
+    ::// if (m_string[[{4}]] == {0}) then { 
+        m_should_exit := {true}; exit_
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{4}]] * m_current_power) % m_modulo |.
@@ -98,8 +113,11 @@ Sync.
 Ursus Definition hash_6: UExpression PhantomType true.
 {
     ::// hash_5().
-    ::// if (m_string[[{5}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{5}]] == {0}) then { 
+        m_should_exit := {true}; exit_ 
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{5}]] * m_current_power) % m_modulo |.
@@ -111,8 +129,11 @@ Sync.
 Ursus Definition hash_7: UExpression PhantomType true.
 {
     ::// hash_6().
-    ::// if (m_string[[{6}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{6}]] == {0}) then { 
+        m_should_exit := {true}; exit_ 
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{6}]] * m_current_power) % m_modulo |.
@@ -124,8 +145,11 @@ Sync.
 Ursus Definition hash_8: UExpression PhantomType true.
 {
     ::// hash_7().
-    ::// if (m_string[[{7}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{7}]] == {0}) then { 
+        m_should_exit := {true}; exit_ 
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{7}]] * m_current_power) % m_modulo |.
@@ -137,8 +161,11 @@ Sync.
 Ursus Definition hash_9: UExpression PhantomType true.
 {
     ::// hash_8().
-    ::// if (m_string[[{8}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{8}]] == {0}) then { 
+        m_should_exit := {true}; exit_ 
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{8}]] * m_current_power) % m_modulo |.
@@ -150,8 +177,11 @@ Sync.
 Ursus Definition hash_10: UExpression PhantomType true.
 {
     ::// hash_9().
-    ::// if (m_string[[{9}]] == {0} || m_should_exit == {1}) then { 
-        m_should_exit := {1}; exit_ 
+    ::// if (m_string[[{9}]] == {0}) then { 
+        m_should_exit := {true}; exit_ 
+    }.
+    ::// if (m_should_exit) then {
+        exit_
     }.
     ::// m_current_power := (m_current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{9}]] * m_current_power) % m_modulo |.

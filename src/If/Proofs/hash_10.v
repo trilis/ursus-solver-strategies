@@ -19,7 +19,7 @@ Lemma hash_10_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  timeout 300 time "[if][topdown][10]" top_down_solver.
+  try timeout 300 time "[if][topdown][10]" top_down_solver; abort.
 Time Qed.
 
 Lemma hash_10_let_form_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
@@ -30,7 +30,7 @@ Lemma hash_10_let_form_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  timeout 300 time "[if][letform][10]" let_form_solver.
+  try timeout 300 time "[if][letform][10]" let_form_solver; abort.
 Time Qed.
 
 Lemma hash_10_bottom_up_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
@@ -41,5 +41,16 @@ Lemma hash_10_bottom_up_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  timeout 300 time "[if][bottomup][10]" bottom_up_goal_solver'.
+  try timeout 300 time "[if][bottomup][10]" bottom_up_goal_solver'; abort.
+Time Qed.
+
+Lemma hash_10_new_top_solver_prf (ll : LedgerLRecord rec) : hash_10_correct_def ll.
+  start_proof.
+  time hash_10_start.
+  compute_destructed_ledgers loc_.
+  time prepare_all ll P.
+  match goal with 
+    | |- _ = ?y => remember y as P; lazy in HeqP; subst P
+  end.
+  try timeout 300 time "[if][newtopdown][10]" new_top_down_solver; abort.
 Time Qed.

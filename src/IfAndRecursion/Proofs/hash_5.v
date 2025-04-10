@@ -1,7 +1,7 @@
-Require Import If.Tactics.hash_5.
+Require Import IfAndRecursion.Tactics.hash_5.
 
 Set Keyed Unification.
-SetDefaultOpaques "If".
+SetDefaultOpaques "IfAndRecursion".
 Opaque N.mul N.modulo.
 Opaque arrLookup.
 
@@ -14,43 +14,47 @@ Defined.
 Lemma hash_5_top_solver_prf (ll : LedgerLRecord rec) : hash_5_correct_def ll.
   start_proof.
   time hash_5_start.
+  time continue_all @hash_4 @hash_3 @hash_2 @hash_1.
   compute_destructed_ledgers loc_.
   time prepare_all ll P.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][topdown][5]" top_down_solver; abort.
+  try timeout 300 time "[if&recursion][topdown][5]" top_down_solver; abort.
 Time Qed.
 
 Lemma hash_5_let_form_prf (ll : LedgerLRecord rec) : hash_5_correct_def ll.
   start_proof.
   time hash_5_start.
+  time continue_all @hash_4 @hash_3 @hash_2 @hash_1.
   compute_destructed_ledgers loc_.
   time prepare_all ll P.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][letform][5]" let_form_solver; abort.
+  try timeout 300 time "[if&recursion][letform][5]" let_form_solver; abort.
 Time Qed.
 
 Lemma hash_5_bottom_up_prf (ll : LedgerLRecord rec) : hash_5_correct_def ll.
   start_proof.
   time hash_5_start.
+  time continue_all @hash_4 @hash_3 @hash_2 @hash_1.
   compute_destructed_ledgers loc_.
   time prepare_all ll P.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][bottomup][5]" bottom_up_goal_solver'; abort.
+  try timeout 300 time "[if&recursion][bottomup][5]" bottom_up_goal_solver'; abort.
 Time Qed.
 
 Lemma hash_5_new_top_solver_prf (ll : LedgerLRecord rec) : hash_5_correct_def ll.
   start_proof.
   time hash_5_start.
+  time continue_all @hash_4 @hash_3 @hash_2 @hash_1.
   compute_destructed_ledgers loc_.
   time prepare_all ll P.
   match goal with 
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
-  try timeout 300 time "[if][newtopdown][5]" new_top_down_solver; abort.
+  try timeout 300 time "[if&recursion][newtopdown][5]" new_top_down_solver; abort.
 Time Qed.
