@@ -13,7 +13,8 @@ Record Contract := {
     m_string: uint64[];
     m_multiplier: uint64;
     m_modulo: uint64;
-    m_hash: uint64
+    m_hash: uint64;
+    result: uint64
 }.
 SetUrsusOptions.
 
@@ -244,6 +245,26 @@ Ursus Definition hash_10: UExpression PhantomType false.
     ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
     ::// current_power := (current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+(*
+uint64 result;
+function f(uint64 a, uint64 b) {
+    uint64 x = result;
+    x = x + a;
+    x = x - b;
+    result = x;
+}
+*)
+Ursus Definition test (a: uint64) (b: uint64): UExpression PhantomType false.
+{
+    ::// var00 x: uint64 := result ;_|.
+    ::// x := x + a.
+    ::// x := x - b.
+    ::// result := x |.
 }
 return.
 Defined.

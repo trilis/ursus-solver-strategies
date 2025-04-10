@@ -20,7 +20,7 @@ Lemma hash_2_top_solver_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
 
-  time "[recursion][topdown][2]" top_down_solver.
+  timeout 300 time "[if][topdown][2]" top_down_solver.
 Time Qed.
 
 Lemma hash_2_let_form_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
@@ -32,7 +32,7 @@ Lemma hash_2_let_form_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
   
-  time "[recursion][letform][2]" let_form_solver.
+  timeout 300 time "[if][letform][2]" let_form_solver.
 Time Qed.
 
 Lemma hash_2_bottom_up_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
@@ -44,5 +44,5 @@ Lemma hash_2_bottom_up_prf (ll : LedgerLRecord rec) : hash_2_correct_def ll.
     | |- _ = ?y => remember y as P; lazy in HeqP; subst P
   end.
 
-  time "[recursion][bottomup][2]" bottom_up_goal_solver.
+  timeout 300 time "[if][bottomup][2]" bottom_up_goal_solver'.
 Time Qed.

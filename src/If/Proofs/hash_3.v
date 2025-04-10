@@ -1,39 +1,45 @@
-Require Import Recursion.Tactics.hash_3.
+Require Import If.Tactics.hash_3.
 
 Set Keyed Unification.
-SetDefaultOpaques "Recursion".
+SetDefaultOpaques "If".
 Opaque N.mul N.modulo.
 Opaque arrLookup.
 
 Definition hash_3_correct_def (ll: LedgerLRecord rec) : Prop.
 execs0 (hash_3 rec def) :
 ll | "m_string" "m_modulo" "m_multiplier" -> l1 | "m_hash".
-con (m_hash = fst (reference_hash_implementation 3%nat m_string (uint2N m_multiplier) (uint2N m_modulo))).
+con (m_hash = fst (fst (reference_hash_implementation 3%nat m_string (uint2N m_multiplier) (uint2N m_modulo)))).
 Defined.
 
 Lemma hash_3_top_solver_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time continue_all @hash_2 @hash_1.
-  time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  time "[recursion][topdown][3]" top_down_solver.
+  time prepare_all ll P.
+  match goal with 
+    | |- _ = ?y => remember y as P; lazy in HeqP; subst P
+  end.
+  timeout 300 time "[if][topdown][3]" top_down_solver.
 Time Qed.
 
 Lemma hash_3_let_form_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time continue_all @hash_2 @hash_1.
-  time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  time "[recursion][letform][3]" let_form_solver.
+  time prepare_all ll P.
+  match goal with 
+    | |- _ = ?y => remember y as P; lazy in HeqP; subst P
+  end.
+  timeout 300 time "[if][letform][3]" let_form_solver.
 Time Qed.
 
 Lemma hash_3_bottom_up_prf (ll : LedgerLRecord rec) : hash_3_correct_def ll.
   start_proof.
   time hash_3_start.
-  time continue_all @hash_2 @hash_1.
-  time prepare_all ll P.
   compute_destructed_ledgers loc_.
-  timeout 300 time "[recursion][bottomup][3]" bottom_up_goal_solver.
+  time prepare_all ll P.
+  match goal with 
+    | |- _ = ?y => remember y as P; lazy in HeqP; subst P
+  end.
+  timeout 300 time "[if][bottomup][3]" bottom_up_goal_solver'.
 Time Qed.
