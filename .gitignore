@@ -18,3 +18,5 @@ res.log
 pwd.tmp
 output.txt
 *.png
+*.dot
+*.svg
