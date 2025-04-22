@@ -1,0 +1,7 @@
+bottomup-naive-lazy
+bottomup-naive-cbv
+bottomup-naive-contractions-typebased-lazy
+bottomup-naive-contractions-typebased-cbv
+bottomup-naive-contractions-strong-typebased-lazy
+bottomup-naive-contractions-strong-typebased-cbv
+native-lazy

@@ -1,0 +1,7 @@
+bottomup-reductions-lazy
+bottomup-reductions-cbv
+bottomup-reductions-contractions-typebased-lazy
+bottomup-reductions-contractions-typebased-cbv
+bottomup-reductions-contractions-strong-typebased-lazy
+bottomup-reductions-contractions-strong-typebased-cbv
+native-lazy

@@ -34,7 +34,6 @@ Ursus Definition hash_1: UExpression PhantomType true.
 {
     ::// var00 current_power: uint64 := {1} ;_|.
     ::// m_hash := {0}.
-    |-----------------------------.
     ::// if (m_string[[{0}]] == {0}) then { exit_ }.
     ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo |.
 }
@@ -46,7 +45,6 @@ Ursus Definition hash_2: UExpression PhantomType true.
 {
     ::// var00 current_power: uint64 := {1} ;_|.
     ::// m_hash := {0}.
-    |-----------------------------.
     ::// if (m_string[[{0}]] == {0}) then { exit_ }.
     ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
     ::// if (m_string[[{1}]] == {0}) then { exit_ }.

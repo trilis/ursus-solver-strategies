@@ -23,7 +23,9 @@ Local Close Scope Q_scope.
 Local Close Scope nat_scope.
 
 UseLocal Definition _ := [
-    uint64
+    uint64;
+    slice_;
+    cell_
 ].
 
 Local Open Scope nat_scope.
@@ -34,7 +36,6 @@ Ursus Definition hash_1: UExpression PhantomType false.
 {
     ::// var00 current_power: uint64 := {1} ;_|.
     ::// m_hash := {0}.
-    |-----------------------------.
     ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo |.
 }
 return.
@@ -45,7 +46,6 @@ Ursus Definition hash_2: UExpression PhantomType false.
 {
     ::// var00 current_power: uint64 := {1} ;_|.
     ::// m_hash := {0}.
-    |-----------------------------.
     ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
     ::// current_power := (current_power * m_multiplier) % m_modulo.
     ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo |.

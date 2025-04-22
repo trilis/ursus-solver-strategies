@@ -1,55 +1,6 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
 Require Import SpecLang.
 
-Tactic Notation "subst_needed" "in" hyp(H) :=
-  idtac "substing needed in" H;
-  repeat match reverse goal with
-    | H' : ?y = _ |- _ =>
-        match goal with
-        | H'' : ?x |- _ =>
-            match H'' with
-            | H =>
-                lazymatch H' with
-                | H => fail
-                | _ => match x with
-                      | context [y] =>
-                          subst y
-                      end
-                end
-            end
-        end
-    end.
-
-Ltac subst_needed :=
-  idtac "substing needed in goal";
-  clear_unneeded_hyps;
-  repeat match reverse goal with
-    | H : ?y = _ |- context [?y] =>
-        subst y
-    end.
-
-(* Ltac process_wellformed' Ledger C x prf :=
-  multidestruct C;
-  subst x; (* the term structured after decomposition *)
-  match goal with
-  | H: ?y = ?Y |- _ => let t := type of y in 
-                          match Y with
-                          | context [decode] =>
-                              lazymatch t with
-                              | @ControlResultP _ _ _ _ => eassert (y = ControlValue _ _);
-                                                            [ > with_strategy opaque 
-                                                            [unMaybe encode decode 
-                                                            pair_storeable uint_storeable address_storeable
-                                                            pair_loadable uint_loadable address_loadable] 
-                                                            bottom_up_goal_solver' Ledger;
-                                                            setoid_rewrite prf; [| try assumption ..];
-                                                            reflexivity | clear H; try (setoid_rewrite prf; [ (* simpl *) | try assumption ..]) ]
-                              | _ => idtac "do not have edefault for" t 
-                              end   
-                          end
-  | _ => idtac "no decode found"
-  end. *)
-
 Module Type WithLedger.
 
 Axiom Ledger: Type.
@@ -58,25 +9,71 @@ End WithLedger.
 
 Module ContractTactics (WL: WithLedger).
 Import WL.
+Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
+Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_.
 
-Ltac new_top_down_solver' :=
-  clear_unneeded_hyps; repeat match reverse goal with
+Ltac topdown :=
+  clear_unneeded_hyps; repeat match reverse goal with 
+      | H: ?y = ?t |- _ =>
+      idtac y; (match t with 
+          | if ?b then _ else _ => destruct b
+          | _ => idtac
+      end); 
+      match type of t with
+        | ULValue _ => subst y
+        | _ =>
+          lazy in H; subst y
+      end
+  end; lazy; auto.
+
+Ltac bottomup_naive :=
+  repeat match goal with 
+    | H: ?y = _ |- _ => subst y
+  end.
+
+Ltac bottomup_reductions :=
+  repeat match goal with 
+    | H: ?y = _ |- _ => lazy in H; subst y
+  end.
+
+Ltac native := 
+clear_unneeded_hyps; repeat match reverse goal with 
     | H: ?y = ?t |- _ =>
+    is_var y; 
+    match t with 
+    | if ?b then _ else _ => 
+      let b' := fresh "b'" in
+      let Heqb' := fresh "Heqb'" in
+      remember b as b' eqn:Heqb'; lazy in Heqb'; 
+      match type of Heqb' with
+        | b' = ?t => destruct t 
+      end; subst b'
+    | _ =>
+        let x := fresh "x" in
+        set (x := t); replace y with x in *; clear H
+    end
+end.
+
+Ltac contractions_typebased :=
+  clear_unneeded_hyps; repeat match reverse goal with
+    | H: ?y = _ |- _ =>
+    is_var y;
+    match type of y with
+      | mapping (bytes ** nat) _ => subst y
+      | field_type _ => subst y
+      | _ => fail 1
+    end
+  end.
+
+Ltac contractions_strong_typebased Ledger :=
+  clear_unneeded_hyps; repeat match reverse goal with
+    | H: ?y = _ |- _ =>
     is_var y;
     match type of y with
       | Ledger => fail 1
       | _ => subst y
     end
-    end;
-    repeat match reverse goal with 
-      | H: ?y = ?t |- _ => 
-        is_var y; lazy in H; 
-        match t with 
-          | if ?b then _ else _ =>
-            destruct b
-          | _ => subst y
-        end
-  end; lazy; auto.
+  end.
 
 (* for ifs *)
 (*time (clear_unneeded_hyps; repeat match reverse goal with
@@ -134,55 +131,35 @@ Ltac new_top_down_solver' :=
       end); idtac y; lazy in H; subst y
   end; lazy; auto).*)
 
-Ltac new_top_down_solver := let Ledger' := eval cbv delta [Ledger] in Ledger in new_top_down_solver' Ledger'.
-Ltac bottom_up_goal_solver := let Ledger' := eval cbv delta [Ledger] in Ledger in bottom_up_goal_solver' Ledger'.
-Ltac process_message_flags := let Ledger' := eval cbv delta [Ledger] in Ledger in process_message_flags' Ledger'.
-Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
-Ltac solve_full_error := let Ledger' := eval cbv delta [Ledger] in Ledger in solve_full_error' Ledger'.
-Ltac try_auto_pure := let Ledger' := eval cbv delta [Ledger] in Ledger in try_auto_pure' Ledger'.
+Ltac native_lazy := native; lazy; auto.
+Ltac native_cbv := native; cbv; auto.
+Ltac native_contractions_typebased_lazy := contractions_typebased; native; lazy; auto.
+Ltac native_contractions_typebased_cbv := contractions_typebased; native; cbv; auto.
+Ltac native_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native; lazy; auto.
+Ltac native_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native; cbv; auto.
 
-(* rewrite abtract tactic declared in CommonTactics *)
-Ltac equalify_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in equalify_arguments' Ledger'.
-Ltac unify_condition := let Ledger' := eval cbv delta [Ledger] in Ledger in unify_condition' Ledger'.
-Ltac equalify_particular_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in equalify_particular_arguments' Ledger'.
-Ltac find_destructed_ledger_subst_compute := let Ledger' := eval cbv delta [Ledger] in Ledger in find_destructed_ledger_subst_compute' Ledger'.
-(* Ltac process_wellformed := let Ledger' := eval cbv delta [Ledger] in Ledger in process_wellformed' Ledger'.
- *)
-Ltac process_multiexists := let Ledger' := eval cbv delta [Ledger] in Ledger in process_multiexists' Ledger'.
+Ltac bottomup_naive_lazy := bottomup_naive; lazy; auto.
+Ltac bottomup_naive_cbv := bottomup_naive; cbv; auto.
+Ltac bottomup_naive_contractions_typebased_lazy := contractions_typebased; bottomup_naive; lazy; auto.
+Ltac bottomup_naive_contractions_typebased_cbv := contractions_typebased; bottomup_naive; cbv; auto.
+Ltac bottomup_naive_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive; lazy; auto.
+Ltac bottomup_naive_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive; cbv; auto.
+
+Ltac bottomup_reductions_lazy := bottomup_reductions; lazy; auto.
+Ltac bottomup_reductions_cbv := bottomup_reductions; cbv; auto.
+Ltac bottomup_reductions_contractions_typebased_lazy := contractions_typebased; bottomup_reductions; lazy; auto.
+Ltac bottomup_reductions_contractions_typebased_cbv := contractions_typebased; bottomup_reductions; cbv; auto.
+Ltac bottomup_reductions_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions; lazy; auto.
+Ltac bottomup_reductions_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions; cbv; auto.
+
+Ltac topdown_lazy := topdown; lazy; auto.
+Ltac topdown_cbv := topdown; cbv; auto.
+Ltac topdown_contractions_typebased_lazy := contractions_typebased; topdown; lazy; auto.
+Ltac topdown_contractions_typebased_cbv := contractions_typebased; topdown; cbv; auto.
+Ltac topdown_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown; lazy; auto.
+Ltac topdown_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown; cbv; auto.
 
 End ContractTactics.
-
-Ltac top_down_solver :=
-  clear_unneeded_hyps; repeat match reverse goal with 
-      | H: ?y = ?t |- _ =>
-      idtac y; (match t with 
-          | context[if ?b then _ else _] => destruct b
-          | _ => idtac
-      end); 
-      match type of t with
-        | ULValue _ => subst y
-        | _ =>
-          lazy in H; subst y
-      end
-  end; lazy; auto.
-
-Ltac let_form_solver := 
-clear_unneeded_hyps; repeat match reverse goal with 
-    | H: ?y = ?t |- _ =>
-    is_var y; 
-    match t with 
-    | if ?b then _ else _ => 
-      let b' := fresh "b'" in
-      let Heqb' := fresh "Heqb'" in
-      remember b as b' eqn:Heqb'; lazy in Heqb'; 
-      match type of Heqb' with
-        | b' = ?t => destruct t 
-      end; subst b'
-    | _ =>
-        let x := fresh "x" in
-        set (x := t); replace y with x in *; clear H
-    end
-end; lazy; auto. 
 
 Axiom false_: False.
 
