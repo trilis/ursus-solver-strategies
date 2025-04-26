@@ -17,6 +17,8 @@ res.log
 .DS_Store
 pwd.tmp
 output.txt
+plots/output.txt
 *.png
 *.dot
 *.svg
+*.out

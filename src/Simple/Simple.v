@@ -250,6 +250,1196 @@ return.
 Defined.
 Sync.
 
+Ursus Definition hash_11: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_12: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_13: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_14: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_15: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_16: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_17: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_18: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_19: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_20: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_21: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_22: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_23: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_24: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_25: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_26: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{25}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_27: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{25}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{26}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_28: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{25}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{26}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{27}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_29: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{25}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{26}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{27}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{28}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
+Ursus Definition hash_30: UExpression PhantomType false.
+{
+    ::// var00 current_power: uint64 := {1} ;_|.
+    ::// m_hash := {0} ;_|.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{0}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{1}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{2}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{3}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{4}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{5}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{6}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{7}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{8}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{9}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{10}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{11}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{12}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{13}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{14}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{15}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{16}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{17}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{18}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{19}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{20}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{21}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{22}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{23}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{24}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{25}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{26}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{27}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    |-----------------------------.
+    ::// m_hash := (m_hash + m_string[[{28}]] * current_power) % m_modulo.
+    ::// current_power := (current_power * m_multiplier) % m_modulo.
+    ::// m_hash := (m_hash + m_string[[{29}]] * current_power) % m_modulo |.
+}
+return.
+Defined.
+Sync.
+
 (*
 uint64 result;
 function f(uint64 a, uint64 b) {
