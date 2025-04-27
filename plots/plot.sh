@@ -1,22 +1,25 @@
 #!/bin/bash
 
 # Check if input file is provided
-if [ $# -lt 1 ] || [ $# -gt 3 ]; then
-    echo "Usage: $0 <input_file> [strategy_filter_file] [max_dataset_size]"
+if [ $# -lt 1 ] || [ $# -gt 4 ]; then
+    echo "Usage: $0 <input_file> [strategy_filter_file] [max_dataset_size] [linear_fit]"
     echo "  strategy_filter_file: Optional file containing one strategy name per line"
     echo "  max_dataset_size: Optional maximum dataset size to include in plots"
+    echo "  linear_fit: Optional flag (1 or 0) to enable/disable linear fitting"
     exit 1
 fi
 
 INPUT_FILE=$1
 STRATEGY_FILTER_FILE=$2
 MAX_SIZE=$3
+LINEAR_FIT=${4:-0}  # Default to 0 (no linear fit)
 
-# Create a temporary file for processed data
-TEMP_DATA="timing_data.dat"
+# Create a temporary directory for processed data
+TEMP_DIR="tmp"
+mkdir -p "$TEMP_DIR"
 
 # Extract and process the timing data
-grep -o "\[.*\] ran for .* secs" "$INPUT_FILE" | while read -r line; do
+grep -o "\[.*\] ran for .* secs" --text "$INPUT_FILE" | while read -r line; do
     # Extract dataset, strategy, size, and time
     dataset=$(echo "$line" | grep -o "\[[^]]*\]" | head -n1 | tr -d '[]')
     strategy=$(echo "$line" | grep -o "\[[^]]*\]" | head -n2 | tail -n1 | tr -d '[]')
@@ -33,10 +36,10 @@ grep -o "\[.*\] ran for .* secs" "$INPUT_FILE" | while read -r line; do
     # If strategy filter file is provided, only include matching strategies
     if [ -n "$STRATEGY_FILTER_FILE" ]; then
         if grep -q "^${strategy}$" "$STRATEGY_FILTER_FILE"; then
-            echo "$dataset $strategy $size $time" >> $TEMP_DATA
+            echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy}.dat"
         fi
     else
-        echo "$dataset $strategy $size $time" >> $TEMP_DATA
+        echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy}.dat"
     fi
 done
 
@@ -46,8 +49,8 @@ set terminal pngcairo enhanced size 800,600
 set grid
 
 # Get unique datasets and strategies
-datasets = system("awk '{print \$1}' timing_data.dat | sort -u")
-strategies = system("awk '{print \$2}' timing_data.dat | sort -u")
+datasets = system("ls $TEMP_DIR/*.dat | xargs -n1 basename | cut -d'_' -f1 | sort -u")
+strategies = system("ls $TEMP_DIR/*.dat | xargs -n1 basename | cut -d'_' -f2 | cut -d'.' -f1 | sort -u")
 n_datasets = words(datasets)
 n_strategies = words(strategies)
 
@@ -66,21 +69,57 @@ set style line 10 lc rgb '#17becf' lt 1 lw 1 pt 7 ps 1.5 # cyan
 # Create a plot for each dataset
 do for [i=1:n_datasets] {
     dataset = word(datasets, i)
-    # Check if there's data for this dataset
     set output sprintf('%s%s%s.png', dataset, '${STRATEGY_FILTER_FILE:+_$(basename "$STRATEGY_FILTER_FILE" .txt)}', '${MAX_SIZE:+_max${MAX_SIZE}}')
     set xlabel 'Dataset Size'
     set ylabel 'Time (seconds)'
     
-    # Get unique sizes for this dataset
-    sizes = system(sprintf("awk '\$1==\"%s\" {print \$3}' timing_data.dat | sort -n | uniq", dataset))
-    n_sizes = words(sizes)
-    
     set datafile missing "NaN"
+    set key top left
+    
     # Create a plot with a line for each strategy
-    plot for [j=1:n_strategies] \
-            'timing_data.dat' using (strcol(1) eq dataset && strcol(2) eq word(strategies, j) ? \$3 : NaN):4 \
-            title word(strategies, j) \
-            with linespoints ls j
+    if ($LINEAR_FIT == 1) {
+        # First perform linear fits for each strategy
+        f1(x) = a1 * x * x + b1 * x + c1
+        f2(x) = a2 * x * x + b2 * x + c2
+        f3(x) = a3 * x * x + b3 * x + c3
+        f4(x) = a4 * x + b4
+        f5(x) = a5 * x + b5
+        f6(x) = a6 * x + b6
+        f7(x) = a7 * x + b7
+        f8(x) = a8 * x + b8
+        f9(x) = a9 * x + b9
+        f10(x) = a10 * x + b10
+        g(i,x) = \
+        i == 1 ? f1(x) : \
+        i == 2 ? f2(x) : \
+        i == 3 ? f3(x) : \
+        i == 4 ? f4(x) : \
+        i == 5 ? f5(x) : \
+        i == 6 ? f6(x) : \
+        i == 7 ? f7(x) : \
+        i == 8 ? f8(x) : \
+        i == 9 ? f9(x) : \
+        i == 10 ? f10(x) : \
+        NaN
+        fit g(1, x) '$TEMP_DIR/'.dataset.'_'.word(strategies, 1).'.dat' using 1:2 via a1, b1, c1
+        fit g(2, x) '$TEMP_DIR/'.dataset.'_'.word(strategies, 2).'.dat' using 1:2 via a2, b2, c2
+        fit g(3, x) '$TEMP_DIR/'.dataset.'_'.word(strategies, 3).'.dat' using 1:2 via a3, b3, c3
+        
+        # Plot data points and fitted lines
+        plot for [j=1:n_strategies] \
+                '$TEMP_DIR/'.dataset.'_'.word(strategies, j).'.dat' using 1:2 \
+                title word(strategies, j) \
+                with linespoints ls j, \
+                for [j=1:n_strategies] \
+                g(j, x) \
+                with lines ls j lw 2
+    } else {
+        # Plot only data points without fits
+        plot for [j=1:n_strategies] \
+                '$TEMP_DIR/'.dataset.'_'.word(strategies, j).'.dat' using 1:2 \
+                title word(strategies, j) \
+                with linespoints ls j
+    }
 }
 EOF
 
@@ -88,4 +127,4 @@ EOF
 gnuplot plot.gnu
 
 # Clean up temporary files
-rm -f $TEMP_DATA plot.gnu
+rm -rf $TEMP_DIR plot.gnu

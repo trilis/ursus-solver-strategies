@@ -4,4 +4,8 @@ topdown-contractions-typebased-lazy
 topdown-contractions-typebased-cbv
 topdown-contractions-strong-typebased-lazy
 topdown-contractions-strong-typebased-cbv
+topdown-contractions-lazy
+topdown-contractions-cbv
+topdown-contractions-strong-lazy
+topdown-contractions-strong-cbv
 native-lazy

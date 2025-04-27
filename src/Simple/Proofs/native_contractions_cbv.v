@@ -1,4 +1,4 @@
-Require Import TacticsAll.
+Require Import Simple.Proofs.TacticsAll.
 Set Keyed Unification.
 SetDefaultOpaques "Simple".
 Opaque N.mul N.modulo arrLookup.

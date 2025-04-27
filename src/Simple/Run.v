@@ -53,6 +53,16 @@ Definition roots_eval : Datatypes.list string := [
                                        "hash_28";
                                        "hash_29";
                                        "hash_30";
+                                       "hash_31";
+                                       "hash_32";
+                                       "hash_33";
+                                       "hash_34";
+                                       "hash_35";
+                                       "hash_36";
+                                       "hash_37";
+                                       "hash_38";
+                                       "hash_39";
+                                       "hash_40";
                                        "test"
 ].
 
@@ -87,6 +97,16 @@ Definition roots_exec : Datatypes.list string := [
                                         "hash_28";
                                         "hash_29";
                                         "hash_30";
+                                        "hash_31";
+                                        "hash_32";
+                                        "hash_33";
+                                        "hash_34";
+                                        "hash_35";
+                                        "hash_36";
+                                        "hash_37";
+                                        "hash_38";
+                                        "hash_39";
+                                        "hash_40";
                                         "test"
 ].
 Elpi GenerateFunction Simple "Run" "Functions" .

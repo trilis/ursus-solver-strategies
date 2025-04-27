@@ -28,3 +28,13 @@ Require Export Simple.Tactics.hash_27.
 Require Export Simple.Tactics.hash_28.
 Require Export Simple.Tactics.hash_29.
 Require Export Simple.Tactics.hash_30.
+Require Export Simple.Tactics.hash_31.
+Require Export Simple.Tactics.hash_32.
+Require Export Simple.Tactics.hash_33.
+Require Export Simple.Tactics.hash_34.
+Require Export Simple.Tactics.hash_35.
+Require Export Simple.Tactics.hash_36.
+Require Export Simple.Tactics.hash_37.
+Require Export Simple.Tactics.hash_38.
+Require Export Simple.Tactics.hash_39.
+Require Export Simple.Tactics.hash_40.

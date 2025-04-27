@@ -4,4 +4,8 @@ bottomup-naive-contractions-typebased-lazy
 bottomup-naive-contractions-typebased-cbv
 bottomup-naive-contractions-strong-typebased-lazy
 bottomup-naive-contractions-strong-typebased-cbv
+bottomup-naive-contractions-lazy
+bottomup-naive-contractions-cbv
+bottomup-naive-contractions-strong-lazy
+bottomup-naive-contractions-strong-cbv
 native-lazy

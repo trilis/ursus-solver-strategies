@@ -1,4 +1,4 @@
-Require Import TacticsAll.
+Require Import Simple.Proofs.TacticsAll.
 Set Keyed Unification.
 SetDefaultOpaques "Simple".
 Opaque N.mul N.modulo arrLookup.
@@ -153,4 +153,54 @@ Time Qed.
 Lemma hash_30_prf (ll : LedgerLRecord rec) : hash_30_correct_def ll.
   start_proof; hash_30_start; prepare ll P loc_.
   time "[simple][topdown-contractions-strong-typebased-cbv][30]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_31_prf (ll : LedgerLRecord rec) : hash_31_correct_def ll.
+start_proof; hash_31_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][31]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_32_prf (ll : LedgerLRecord rec) : hash_32_correct_def ll.
+start_proof; hash_32_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][32]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_33_prf (ll : LedgerLRecord rec) : hash_33_correct_def ll.
+start_proof; hash_33_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][33]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_34_prf (ll : LedgerLRecord rec) : hash_34_correct_def ll.
+start_proof; hash_34_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][34]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_35_prf (ll : LedgerLRecord rec) : hash_35_correct_def ll.
+start_proof; hash_35_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][35]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_36_prf (ll : LedgerLRecord rec) : hash_36_correct_def ll.
+start_proof; hash_36_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][36]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_37_prf (ll : LedgerLRecord rec) : hash_37_correct_def ll.
+start_proof; hash_37_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][37]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_38_prf (ll : LedgerLRecord rec) : hash_38_correct_def ll.
+start_proof; hash_38_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][38]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_39_prf (ll : LedgerLRecord rec) : hash_39_correct_def ll.
+start_proof; hash_39_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][39]" timeout 300 solver.
+Time Qed.
+
+Lemma hash_40_prf (ll : LedgerLRecord rec) : hash_40_correct_def ll.
+start_proof; hash_40_start; prepare ll P loc_.
+time "[simple][topdown-contractions-strong-typebased-cbv][40]" timeout 300 solver.
 Time Qed.
