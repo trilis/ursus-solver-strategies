@@ -23,6 +23,10 @@ grep -o "\[.*\] ran for .* secs" --text "$INPUT_FILE" | while read -r line; do
     # Extract dataset, strategy, size, and time
     dataset=$(echo "$line" | grep -o "\[[^]]*\]" | head -n1 | tr -d '[]')
     strategy=$(echo "$line" | grep -o "\[[^]]*\]" | head -n2 | tail -n1 | tr -d '[]')
+
+    # Extract strategy base name by removing the last token after hyphen
+    strategy_base=$(echo "$strategy" | sed 's/-[^-]*$//')
+
     size=$(echo "$line" | grep -o "\[[^]]*\]" | tail -n1 | tr -d '[]')
     time=$(echo "$line" | grep -o "ran for [0-9.]*" | cut -d' ' -f3)
     
@@ -36,10 +40,10 @@ grep -o "\[.*\] ran for .* secs" --text "$INPUT_FILE" | while read -r line; do
     # If strategy filter file is provided, only include matching strategies
     if [ -n "$STRATEGY_FILTER_FILE" ]; then
         if grep -q "^${strategy}$" "$STRATEGY_FILTER_FILE"; then
-            echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy}.dat"
+            echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy_base}.dat"
         fi
     else
-        echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy}.dat"
+        echo "$size $time" >> "$TEMP_DIR/${dataset}_${strategy_base}.dat"
     fi
 done
 
@@ -72,9 +76,10 @@ do for [i=1:n_datasets] {
     set output sprintf('%s%s%s.png', dataset, '${STRATEGY_FILTER_FILE:+_$(basename "$STRATEGY_FILTER_FILE" .txt)}', '${MAX_SIZE:+_max${MAX_SIZE}}')
     set xlabel 'Dataset Size'
     set ylabel 'Time (seconds)'
+    set title dataset
     
     set datafile missing "NaN"
-    set key top left
+    #set key top left
     
     # Create a plot with a line for each strategy
     if ($LINEAR_FIT == 1) {
@@ -112,7 +117,7 @@ do for [i=1:n_datasets] {
                 with linespoints ls j, \
                 for [j=1:n_strategies] \
                 g(j, x) \
-                with lines ls j lw 2
+                notitle with lines ls j lw 2
     } else {
         # Plot only data points without fits
         plot for [j=1:n_strategies] \

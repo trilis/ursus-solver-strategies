@@ -12,10 +12,10 @@ int main() {
         cout << endl;
     }*/
 
-    /*string s;
-    cin >> s;*/
-    for (int i = 40; i >= 3; i--) {
-        cout << "find . -type f -name \"*.v\" -print0 | xargs -0 sed -i \"s/";
+    string s;
+    cin >> s;
+    for (int i = 1; i <= 40; i++) {
+        /*cout << "find . -type f -name \"*.v\" -print0 | xargs -0 sed -i \"s/";
         for (int j = 1; j < i; j++) {
             cout << "@hash_" << j;
         }
@@ -23,18 +23,19 @@ int main() {
         for (int j = i - 1; j >= 1; j--) {
             cout << "@hash_" << j << " ";
         }
-        cout << "/g\"" << endl;
+        cout << "/g\"" << endl;*/
 
-        /*cout << "Lemma hash_" << i << "_prf (ll : LedgerLRecord rec) : hash_" << i << "_correct_def ll." << endl;
-        cout << "start_proof; hash_" << i << "_start; prepare ll P loc_." << endl;
-        cout << "continue_all ";
-        for (int j = 1; j < i; j++) {
-            cout << "@hash_" << j;
+        cout << "Lemma hash_" << i << "_prf (ll : LedgerLRecord rec) : hash_" << i << "_correct_def ll." << endl;
+        cout << "start_proof; hash_" << i << "_start." << endl;
+        cout << "continue_all_custom ";
+        for (int j = i - 1; j >= 1; j--) {
+            cout << "@hash_" << j << " ";
         }
         cout << "." << endl;
+        cout << "prepare ll P loc_." << endl;
         cout << "time \"[simple][" << s << "][" << i << "]\" timeout 300 solver." << endl;
         cout << "Time Qed." << endl;
-        cout << endl;*/
+        cout << endl;
 
         /*cout << "#[returns=ret_]" << endl;
         cout << "Ursus Definition hash_" << i << ": UExpression (uint64 * uint64) false." << endl;

@@ -1,7 +1,6 @@
-native-cbv
 native-contractions-lazy
-native-contractions-cbv
 native-contractions-strong-lazy
-native-contractions-strong-cbv
+native-contractions-strong-typebased-lazy
+native-contractions-typebased-lazy
 topdown-contractions-strong-typebased-lazy
 native-lazy
