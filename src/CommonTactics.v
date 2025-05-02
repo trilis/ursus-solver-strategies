@@ -12,7 +12,7 @@ Import WL.
 Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
 Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_.
 
-Ltac topdown :=
+Ltac topdown_lazy' :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       idtac y; (match t with 
@@ -24,16 +24,35 @@ Ltac topdown :=
         | _ =>
           lazy in H; subst y
       end
-  end; lazy; auto.
+  end.
+
+Ltac topdown_cbv' :=
+  clear_unneeded_hyps; repeat match reverse goal with 
+      | H: ?y = ?t |- _ =>
+      idtac y; (match t with 
+          | if ?b then _ else _ => destruct b
+          | _ => idtac
+      end); 
+      match type of t with
+        | ULValue _ => subst y
+        | _ =>
+          cbv in H; subst y
+      end
+  end.
 
 Ltac bottomup_naive :=
   repeat match goal with 
     | H: ?y = _ |- _ => subst y
   end.
 
-Ltac bottomup_reductions :=
+Ltac bottomup_reductions_lazy' :=
   repeat match goal with 
     | H: ?y = _ |- _ => lazy in H; subst y
+  end.
+
+Ltac bottomup_reductions_cbv' :=
+  repeat match goal with 
+    | H: ?y = _ |- _ => cbv in H; subst y
   end.
 
 Ltac native := 
@@ -42,12 +61,7 @@ clear_unneeded_hyps; repeat match reverse goal with
     is_var y; 
     match t with 
     | if ?b then _ else _ => 
-      let b' := fresh "b'" in
-      let Heqb' := fresh "Heqb'" in
-      remember b as b' eqn:Heqb'; lazy in Heqb'; 
-      match type of Heqb' with
-        | b' = ?t => destruct t 
-      end; subst b'
+      idtac (* TODO *)
     | _ =>
         let x := fresh "x" in
         set (x := t); replace y with x in *; clear H
@@ -269,26 +283,26 @@ Ltac bottomup_naive_contractions_cbv := contractions; bottomup_naive; cbv; auto.
 Ltac bottomup_naive_contractions_strong_lazy := contractions_strong; bottomup_naive; lazy; auto.
 Ltac bottomup_naive_contractions_strong_cbv := contractions_strong; bottomup_naive; cbv; auto.
 
-Ltac bottomup_reductions_lazy := bottomup_reductions; lazy; auto.
-Ltac bottomup_reductions_cbv := bottomup_reductions; cbv; auto.
-Ltac bottomup_reductions_contractions_typebased_lazy := contractions_typebased; bottomup_reductions; lazy; auto.
-Ltac bottomup_reductions_contractions_typebased_cbv := contractions_typebased; bottomup_reductions; cbv; auto.
-Ltac bottomup_reductions_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions; lazy; auto.
-Ltac bottomup_reductions_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions; cbv; auto.
-Ltac bottomup_reductions_contractions_lazy := contractions; bottomup_reductions; lazy; auto.
-Ltac bottomup_reductions_contractions_cbv := contractions; bottomup_reductions; cbv; auto.
-Ltac bottomup_reductions_contractions_strong_lazy := contractions_strong; bottomup_reductions; lazy; auto.
-Ltac bottomup_reductions_contractions_strong_cbv := contractions_strong; bottomup_reductions; cbv; auto.
+Ltac bottomup_reductions_lazy := bottomup_reductions_lazy'; lazy; auto.
+Ltac bottomup_reductions_cbv := bottomup_reductions_cbv'; cbv; auto.
+Ltac bottomup_reductions_contractions_typebased_lazy := contractions_typebased; bottomup_reductions_lazy'; lazy; auto.
+Ltac bottomup_reductions_contractions_typebased_cbv := contractions_typebased; bottomup_reductions_cbv'; cbv; auto.
+Ltac bottomup_reductions_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions_lazy'; lazy; auto.
+Ltac bottomup_reductions_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_reductions_cbv'; cbv; auto.
+Ltac bottomup_reductions_contractions_lazy := contractions; bottomup_reductions_lazy'; lazy; auto.
+Ltac bottomup_reductions_contractions_cbv := contractions; bottomup_reductions_cbv'; cbv; auto.
+Ltac bottomup_reductions_contractions_strong_lazy := contractions_strong; bottomup_reductions_lazy'; lazy; auto.
+Ltac bottomup_reductions_contractions_strong_cbv := contractions_strong; bottomup_reductions_cbv'; cbv; auto.
 
-Ltac topdown_lazy := topdown; lazy; auto.
-Ltac topdown_cbv := topdown; cbv; auto.
-Ltac topdown_contractions_typebased_lazy := contractions_typebased; topdown; lazy; auto.
-Ltac topdown_contractions_typebased_cbv := contractions_typebased; topdown; cbv; auto.
-Ltac topdown_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown; lazy; auto.
-Ltac topdown_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown; cbv; auto.
-Ltac topdown_contractions_lazy := contractions; topdown; lazy; auto.
-Ltac topdown_contractions_cbv := contractions; topdown; cbv; auto.
-Ltac topdown_contractions_strong_lazy := contractions_strong; topdown; lazy; auto.
-Ltac topdown_contractions_strong_cbv := contractions_strong; topdown; cbv; auto.
+Ltac topdown_lazy := topdown_lazy'; lazy; auto.
+Ltac topdown_cbv := topdown_cbv'; cbv; auto.
+Ltac topdown_contractions_typebased_lazy := contractions_typebased; topdown_lazy'; lazy; auto.
+Ltac topdown_contractions_typebased_cbv := contractions_typebased; topdown_cbv'; cbv; auto.
+Ltac topdown_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown_lazy'; lazy; auto.
+Ltac topdown_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; topdown_cbv'; cbv; auto.
+Ltac topdown_contractions_lazy := contractions; topdown_lazy'; lazy; auto.
+Ltac topdown_contractions_cbv := contractions; topdown_cbv'; cbv; auto.
+Ltac topdown_contractions_strong_lazy := contractions_strong; topdown_lazy'; lazy; auto.
+Ltac topdown_contractions_strong_cbv := contractions_strong; topdown_cbv'; cbv; auto.
 
 End ContractTactics.
