@@ -11,12 +11,20 @@ Module ContractTactics (WL: WithLedger).
 Import WL.
 Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
 Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_.
+Ltac prepare_ifs ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_;
+  match goal with 
+    | |- _ = ?y => remember y as P eqn:HeqP; lazy in HeqP; subst P
+  end.
 
 Ltac topdown_lazy' :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       idtac y; (match t with 
-          | if ?b then _ else _ => destruct b
+          | if _ then _ else _ => 
+            lazy in H; match type of H with 
+              | _ = if ?b then _ else _ =>
+                destruct b
+            end
           | _ => idtac
       end); 
       match type of t with
@@ -30,7 +38,11 @@ Ltac topdown_cbv' :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       idtac y; (match t with 
-          | if ?b then _ else _ => destruct b
+          | if _ then _ else _ => 
+            cbv in H; match type of H with 
+              | _ = if ?b then _ else _ =>
+                destruct b
+            end
           | _ => idtac
       end); 
       match type of t with
@@ -55,95 +67,77 @@ Ltac bottomup_reductions_cbv' :=
     | H: ?y = _ |- _ => cbv in H; subst y
   end.
 
-Ltac native := 
+Ltac native_lazy' := 
 clear_unneeded_hyps; repeat match reverse goal with 
     | H: ?y = ?t |- _ =>
     is_var y; 
     match t with 
     | if ?b then _ else _ => 
-      idtac (* TODO *)
+      fail 1
     | _ =>
         let x := fresh "x" in
         set (x := t); replace y with x in *; clear H
     end
+end;
+repeat match reverse goal with 
+  | H: ?y = if ?b then _ else _ |- _ =>
+    let b' := fresh "b'" in
+    let Heqb' := fresh "Heqb'" in
+    remember b as b' eqn:Heqb'; lazy in Heqb'; 
+    match type of Heqb' with
+      | b' = ?t => destruct t 
+    end; subst b'; subst y
+end.
+
+Ltac native_cbv' := 
+clear_unneeded_hyps; repeat match reverse goal with 
+    | H: ?y = ?t |- _ =>
+    is_var y; 
+    match t with 
+    | if ?b then _ else _ => 
+      fail 1
+    | _ =>
+        let x := fresh "x" in
+        set (x := t); replace y with x in *; clear H
+    end
+end;
+repeat match reverse goal with 
+  | H: ?y = if ?b then _ else _ |- _ =>
+    let b' := fresh "b'" in
+    let Heqb' := fresh "Heqb'" in
+    remember b as b' eqn:Heqb'; cbv in Heqb'; 
+    match type of Heqb' with
+      | b' = ?t => destruct t 
+    end; subst b'; subst y
 end.
 
 Ltac contractions_typebased :=
   clear_unneeded_hyps; repeat match reverse goal with
-    | H: ?y = _ |- _ =>
+    | H: ?y = ?t |- _ =>
     is_var y;
-    match type of y with
-      | mapping (bytes ** nat) _ => subst y
-      | field_type _ => subst y
-      | _ => fail 1
+    match t with 
+      | if _ then _ else _ => fail 1
+      | _ => 
+        match type of y with
+          | mapping (bytes ** nat) _ => subst y
+          | field_type _ => subst y
+        end
     end
   end.
 
 Ltac contractions_strong_typebased Ledger :=
   clear_unneeded_hyps; repeat match reverse goal with
-    | H: ?y = _ |- _ =>
-    is_var y;
-    match type of y with
-      | Ledger => fail 1
-      | _ => subst y
-    end
-  end.
-
-(* for ifs *)
-(*time (clear_unneeded_hyps; repeat match reverse goal with
     | H: ?y = ?t |- _ =>
     is_var y;
     match t with 
-      | if ?b then _ else _ =>
-        fail 1 
-      | _ =>
+      | if _ then _ else _ => fail 1
+      | _ => 
         match type of y with
-          | LedgerLRecord rec => fail 1
+          | Ledger => fail 1
           | _ => subst y
         end
     end
-  end;
-  repeat match reverse goal with 
-      | H: ?y = ?t |- _ => 
-        is_var y;
-        match type of t with 
-        | LedgerLRecord rec => idtac 
-        | _ => fail 1
-        end;
-        assert_fails (idtac; multimatch goal with 
-          | H2: ?y2 = _ |- _ => 
-              match t with 
-                  | context[y2] => idtac
-                  | _ => fail
-              end
-      end); idtac y; lazy in H; subst y
-  end;
-  repeat match reverse goal with 
-    | H: ?y = ?t |- _ => 
-        is_var y;
-        match t with 
-        | if ?b then _ else _ => 
-          idtac y;
-          let b' := fresh "b'" in
-          let Heqb' := fresh "Heqb'" in
-          remember b as b' eqn:Heqb'; lazy in Heqb'; 
-          match type of Heqb' with
-            | b' = ?t => destruct t 
-          end; subst b'
-        | _ => fail 1
-        end
-  end;
-  repeat match reverse goal with 
-      | H: ?y = ?t |- _ => 
-        is_var y;
-        assert_fails (idtac; multimatch goal with 
-          | H2: ?y2 = _ |- _ => 
-              match t with 
-                  | context[y2] => idtac
-                  | _ => fail
-              end
-      end); idtac y; lazy in H; subst y
-  end; lazy; auto).*)
+  end.
 
 Definition wrapper {T: Type} (x: T) : True := I.
 Inductive meta :=
@@ -261,16 +255,16 @@ Ltac contractions_strong := repeat match goal with
     end
   end.
 
-Ltac native_lazy := native; lazy; auto.
-Ltac native_cbv := native; cbv; auto.
-Ltac native_contractions_typebased_lazy := contractions_typebased; native; lazy; auto.
-Ltac native_contractions_typebased_cbv := contractions_typebased; native; cbv; auto.
-Ltac native_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native; lazy; auto.
-Ltac native_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native; cbv; auto.
-Ltac native_contractions_lazy := contractions; native; lazy; auto.
-Ltac native_contractions_cbv := contractions; native; cbv; auto.
-Ltac native_contractions_strong_lazy := contractions_strong; native; lazy; auto.
-Ltac native_contractions_strong_cbv := contractions_strong; native; cbv; auto.
+Ltac native_lazy := native_lazy'; lazy; auto.
+Ltac native_cbv := native_cbv'; cbv; auto.
+Ltac native_contractions_typebased_lazy := contractions_typebased; native_lazy'; lazy; auto.
+Ltac native_contractions_typebased_cbv := contractions_typebased; native_cbv'; cbv; auto.
+Ltac native_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native_lazy'; lazy; auto.
+Ltac native_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; native_cbv'; cbv; auto.
+Ltac native_contractions_lazy := contractions; native_lazy'; lazy; auto.
+Ltac native_contractions_cbv := contractions; native_cbv'; cbv; auto.
+Ltac native_contractions_strong_lazy := contractions_strong; native_lazy'; lazy; auto.
+Ltac native_contractions_strong_cbv := contractions_strong; native_cbv'; cbv; auto.
 
 Ltac bottomup_naive_lazy := bottomup_naive; lazy; auto.
 Ltac bottomup_naive_cbv := bottomup_naive; cbv; auto.
