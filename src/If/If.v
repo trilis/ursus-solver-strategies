@@ -1,5 +1,5 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import UrsusContractCreator.BaseContracts.EverContract.
+Require Import UrsusPatterns.Solidity.TVM.EverBase.
 
 Set UrsusPrefixTactic "PrefixOnlyURValue".
 

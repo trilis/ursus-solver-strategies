@@ -1,5 +1,4 @@
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import SpecLang.
 
 Module Type WithLedger.
 
@@ -9,22 +8,34 @@ End WithLedger.
 
 Module ContractTactics (WL: WithLedger).
 Import WL.
+
 Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
-Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_.
+Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_; elpi sort_vars -1.
 Ltac prepare_ifs ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_;
   match goal with 
     | |- _ = ?y => remember y as P eqn:HeqP; lazy in HeqP; subst P
-  end.
+  end; elpi sort_vars -1.
+
+Ltac nested_if_destruct b :=
+  lazymatch b with
+    | context[if ?b0 then _ else _] => 
+      nested_if_destruct b0
+    | _ => idtac b; destruct b
+    end.
 
 Ltac topdown_lazy' :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       idtac y; (match t with 
-          | if _ then _ else _ => 
-            lazy in H; match type of H with 
-              | _ = if ?b then _ else _ =>
-                destruct b
-            end
+          | if ?b then _ else _ => 
+              let b' := fresh "b'" in
+              let Heqb' := fresh "Heqb'" in
+              remember b as b' eqn:Heqb'; lazy in Heqb';
+              match type of Heqb' with 
+                | _ = ?b0 =>
+                  nested_if_destruct b0
+              end;
+              subst b'
           | _ => idtac
       end); 
       match type of t with
@@ -38,11 +49,15 @@ Ltac topdown_cbv' :=
   clear_unneeded_hyps; repeat match reverse goal with 
       | H: ?y = ?t |- _ =>
       idtac y; (match t with 
-          | if _ then _ else _ => 
-            cbv in H; match type of H with 
-              | _ = if ?b then _ else _ =>
-                destruct b
-            end
+          | if ?b then _ else _ => 
+              let b' := fresh "b'" in
+              let Heqb' := fresh "Heqb'" in
+              remember b as b' eqn:Heqb'; cbv in Heqb';
+              match type of Heqb' with 
+                | _ = ?b0 =>
+                  nested_if_destruct b0
+              end;
+              subst b'
           | _ => idtac
       end); 
       match type of t with
@@ -52,19 +67,86 @@ Ltac topdown_cbv' :=
       end
   end.
 
-Ltac bottomup_naive :=
+Ltac bottomup_naive_lazy' :=
   repeat match goal with 
     | H: ?y = _ |- _ => subst y
-  end.
+  end;
+  repeat (match reverse goal with 
+  | H: ?y = if ?b then _ else _ |- _ =>
+    idtac y;
+    let b' := fresh "b'" in
+    let Heqb' := fresh "Heqb'" in
+    remember b as b' eqn:Heqb'; lazy in Heqb';
+    match type of Heqb' with 
+      | _ = ?b0 =>
+        nested_if_destruct b0
+    end;
+    subst b'; subst y
+end;
+repeat (match reverse goal with 
+    | H: ?y = ?t |- _ => 
+      lazymatch t with 
+        | if _ then _ else _ => fail
+        | _ => subst y
+      end
+  end)
+).
+
+Ltac bottomup_naive_cbv' :=
+  repeat match goal with 
+    | H: ?y = _ |- _ => subst y
+  end;
+  repeat (match reverse goal with 
+  | H: ?y = if ?b then _ else _ |- _ =>
+    idtac y;
+    let b' := fresh "b'" in
+    let Heqb' := fresh "Heqb'" in
+    remember b as b' eqn:Heqb'; cbv in Heqb';
+    match type of Heqb' with 
+      | _ = ?b0 =>
+        nested_if_destruct b0
+    end;
+    subst b'; subst y
+end;
+repeat (match reverse goal with 
+    | H: ?y = ?t |- _ => 
+      lazymatch t with 
+        | if _ then _ else _ => fail
+        | _ => subst y
+      end
+  end)
+).
 
 Ltac bottomup_reductions_lazy' :=
   repeat match goal with 
-    | H: ?y = _ |- _ => lazy in H; subst y
+    | H: ?y = ?t |- _ => match t with 
+    | if ?b then _ else _ => 
+        let b' := fresh "b'" in
+        let Heqb' := fresh "Heqb'" in
+        remember b as b' eqn:Heqb'; lazy in Heqb';
+        match type of Heqb' with 
+          | _ = ?b0 =>
+            nested_if_destruct b0
+        end;
+        subst b'
+    | _ => idtac
+  end; lazy in H; subst y
   end.
 
 Ltac bottomup_reductions_cbv' :=
   repeat match goal with 
-    | H: ?y = _ |- _ => cbv in H; subst y
+    | H: ?y = ?t |- _ => match t with 
+    | if ?b then _ else _ => 
+        let b' := fresh "b'" in
+        let Heqb' := fresh "Heqb'" in
+        remember b as b' eqn:Heqb'; cbv in Heqb';
+        match type of Heqb' with 
+          | _ = ?b0 =>
+            nested_if_destruct b0
+        end;
+        subst b'
+    | _ => idtac
+  end; cbv in H; subst y
   end.
 
 Ltac native_lazy' := 
@@ -79,15 +161,26 @@ clear_unneeded_hyps; repeat match reverse goal with
         set (x := t); replace y with x in *; clear H
     end
 end;
-repeat match reverse goal with 
-  | H: ?y = if ?b then _ else _ |- _ =>
-    let b' := fresh "b'" in
-    let Heqb' := fresh "Heqb'" in
-    remember b as b' eqn:Heqb'; lazy in Heqb'; 
-    match type of Heqb' with
-      | b' = ?t => destruct t 
-    end; subst b'; subst y
-end.
+repeat (match reverse goal with 
+    | H: ?y = if ?b then _ else _ |- _ =>
+      idtac y;
+      let b' := fresh "b'" in
+      let Heqb' := fresh "Heqb'" in
+      remember b as b' eqn:Heqb'; lazy in Heqb';
+      match type of Heqb' with 
+        | _ = ?b0 =>
+          nested_if_destruct b0
+      end;
+      subst b'; subst y
+  end;
+  repeat (match reverse goal with 
+      | H: ?y = ?t |- _ => 
+        lazymatch t with 
+          | if _ then _ else _ => fail
+          | _ => subst y
+        end
+    end)
+).
 
 Ltac native_cbv' := 
 clear_unneeded_hyps; repeat match reverse goal with 
@@ -101,15 +194,26 @@ clear_unneeded_hyps; repeat match reverse goal with
         set (x := t); replace y with x in *; clear H
     end
 end;
-repeat match reverse goal with 
-  | H: ?y = if ?b then _ else _ |- _ =>
-    let b' := fresh "b'" in
-    let Heqb' := fresh "Heqb'" in
-    remember b as b' eqn:Heqb'; cbv in Heqb'; 
-    match type of Heqb' with
-      | b' = ?t => destruct t 
-    end; subst b'; subst y
-end.
+repeat (match reverse goal with 
+    | H: ?y = if ?b then _ else _ |- _ =>
+      idtac y;
+      let b' := fresh "b'" in
+      let Heqb' := fresh "Heqb'" in
+      remember b as b' eqn:Heqb'; cbv in Heqb';
+      match type of Heqb' with 
+        | _ = ?b0 =>
+          nested_if_destruct b0
+      end;
+      subst b'; subst y
+  end;
+  repeat (match reverse goal with 
+      | H: ?y = ?t |- _ => 
+        lazymatch t with 
+          | if _ then _ else _ => fail
+          | _ => subst y
+        end
+    end)
+).
 
 Ltac contractions_typebased :=
   clear_unneeded_hyps; repeat match reverse goal with
@@ -162,7 +266,7 @@ Ltac contractions := repeat match goal with
       | |- _ => idtac
     end;
     repeat match goal with 
-      | _: ?y2 = _ |- _ =>
+      | _: ?y2 = ?t2 |- _ =>
         is_var y2;
         match eval cbv delta [l] in l with 
           | context[y2] => fail 1
@@ -172,9 +276,12 @@ Ltac contractions := repeat match goal with
           | context[y2] =>
             set (l' := Datatypes.cons (wrapper y2) l);
             subst l; rename l' into l;
-            match goal with
-              | x := meta_y (wrapper y2) ?l1 ?l2 |- _ =>
-                clear x; pose (meta_y (wrapper y2) l1 (Datatypes.cons (wrapper y1) l2))
+            match t2 with 
+              | if _ then _ else _ => idtac
+              | _ => match goal with
+                | x := meta_y (wrapper y2) ?l1 ?l2 |- _ =>
+                  clear x; pose (meta_y (wrapper y2) l1 (Datatypes.cons (wrapper y1) l2))
+              end
             end
         end
     end;
@@ -219,7 +326,7 @@ Ltac contractions_strong := repeat match goal with
       | |- _ => idtac
     end;
     repeat match goal with 
-      | _: ?y2 = _ |- _ =>
+      | _: ?y2 = ?t2 |- _ =>
         is_var y2;
         match eval cbv delta [l] in l with 
           | context[y2] => fail 1
@@ -229,9 +336,12 @@ Ltac contractions_strong := repeat match goal with
           | context[y2] =>
             set (l' := Datatypes.cons (wrapper y2) l);
             subst l; rename l' into l;
-            match goal with
-              | x := meta_y (wrapper y2) ?l1 ?l2 |- _ =>
-                clear x; pose (meta_y (wrapper y2) l1 (Datatypes.cons (wrapper y1) l2))
+            match t2 with 
+              | if _ then _ else _ => idtac
+              | _ => match goal with
+                | x := meta_y (wrapper y2) ?l1 ?l2 |- _ =>
+                  clear x; pose (meta_y (wrapper y2) l1 (Datatypes.cons (wrapper y1) l2))
+              end
             end
         end
     end;
@@ -266,16 +376,16 @@ Ltac native_contractions_cbv := contractions; native_cbv'; cbv; auto.
 Ltac native_contractions_strong_lazy := contractions_strong; native_lazy'; lazy; auto.
 Ltac native_contractions_strong_cbv := contractions_strong; native_cbv'; cbv; auto.
 
-Ltac bottomup_naive_lazy := bottomup_naive; lazy; auto.
-Ltac bottomup_naive_cbv := bottomup_naive; cbv; auto.
-Ltac bottomup_naive_contractions_typebased_lazy := contractions_typebased; bottomup_naive; lazy; auto.
-Ltac bottomup_naive_contractions_typebased_cbv := contractions_typebased; bottomup_naive; cbv; auto.
-Ltac bottomup_naive_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive; lazy; auto.
-Ltac bottomup_naive_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive; cbv; auto.
-Ltac bottomup_naive_contractions_lazy := contractions; bottomup_naive; lazy; auto.
-Ltac bottomup_naive_contractions_cbv := contractions; bottomup_naive; cbv; auto.
-Ltac bottomup_naive_contractions_strong_lazy := contractions_strong; bottomup_naive; lazy; auto.
-Ltac bottomup_naive_contractions_strong_cbv := contractions_strong; bottomup_naive; cbv; auto.
+Ltac bottomup_naive_lazy := bottomup_naive_lazy'; lazy; auto.
+Ltac bottomup_naive_cbv := bottomup_naive_cbv'; cbv; auto.
+Ltac bottomup_naive_contractions_typebased_lazy := contractions_typebased; bottomup_naive_lazy'; lazy; auto.
+Ltac bottomup_naive_contractions_typebased_cbv := contractions_typebased; bottomup_naive_cbv'; cbv; auto.
+Ltac bottomup_naive_contractions_strong_typebased_lazy := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive_lazy'; lazy; auto.
+Ltac bottomup_naive_contractions_strong_typebased_cbv := let Ledger' := eval cbv delta [Ledger] in Ledger in contractions_strong_typebased Ledger'; bottomup_naive_cbv'; cbv; auto.
+Ltac bottomup_naive_contractions_lazy := contractions; bottomup_naive_lazy'; lazy; auto.
+Ltac bottomup_naive_contractions_cbv := contractions; bottomup_naive_cbv'; cbv; auto.
+Ltac bottomup_naive_contractions_strong_lazy := contractions_strong; bottomup_naive_lazy'; lazy; auto.
+Ltac bottomup_naive_contractions_strong_cbv := contractions_strong; bottomup_naive_cbv'; cbv; auto.
 
 Ltac bottomup_reductions_lazy := bottomup_reductions_lazy'; lazy; auto.
 Ltac bottomup_reductions_cbv := bottomup_reductions_cbv'; cbv; auto.

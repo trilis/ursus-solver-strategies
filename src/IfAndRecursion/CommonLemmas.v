@@ -1,7 +1,6 @@
 From Hammer Require Import Tactics Hammer.
 
 Require Import UrsusEnvironment.Solidity.current.Environment.
-Require Import SpecLang.  
 
 Fixpoint reference_hash_implementation 
     (n: nat)
@@ -16,8 +15,7 @@ Fixpoint reference_hash_implementation
             | None => Build_XUBInteger 0
         end in
         let '(h, pw, finished) := reference_hash_implementation n' m_string m_multiplier m_modulo in
-        if Common.eqb c default: bool then (h, pw, true) else
-        if finished then (h, pw, true) else
+        if (Common.eqb c default || finished) then (h, pw, true) else
         let h' := N.modulo (h + uint2N c * pw) m_modulo in
         let pw' := N.modulo (pw * m_multiplier) m_modulo in
         (h', pw', false)

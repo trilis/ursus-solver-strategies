@@ -27,7 +27,7 @@ int main() {
 
         cout << "Lemma hash_" << i << "_prf (ll : LedgerLRecord rec) : hash_" << i << "_correct_def ll." << endl;
         cout << "start_proof; hash_" << i << "_start." << endl;
-        cout << "continue_all_custom ";
+        cout << "continue_all ";
         for (int j = i - 1; j >= 1; j--) {
             cout << "@hash_" << j << " ";
         }

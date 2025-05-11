@@ -1,3 +1,4 @@
+Require Import UrsusEnvironment.Solidity.current.Environment.
 Require Export CommonTactics.
 
 Require Import IfAndRecursion.IfAndRecursion.
@@ -35,6 +36,3 @@ Ltac preprocess_ifs :=
         end
     end
 end.
-
-
-Ltac bottom_up_goal_solver' := preprocess_ifs; bottom_up_goal_solver.
