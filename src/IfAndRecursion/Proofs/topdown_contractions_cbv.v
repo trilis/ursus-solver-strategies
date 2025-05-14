@@ -1,6 +1,6 @@
-Require Import If.Proofs.TacticsAll.
+Require Import IfAndRecursion.Proofs.TacticsAll.
 Set Keyed Unification.
-SetDefaultOpaques "If".
+SetDefaultOpaques "IfAndRecursion".
 Opaque N.mul N.modulo arrLookup.
 
 Ltac solver := topdown_contractions_cbv.

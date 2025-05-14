@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Check if input file is provided
-if [ $# -lt 1 ] || [ $# -gt 4 ]; then
-    echo "Usage: $0 <input_file> [strategy_filter_file] [max_dataset_size] [linear_fit]"
+if [ $# -lt 1 ] || [ $# -gt 5 ]; then
+    echo "Usage: $0 <input_file> [strategy_filter_file] [max_dataset_size] [linear_fit] [log_scale]"
     echo "  strategy_filter_file: Optional file containing one strategy name per line"
     echo "  max_dataset_size: Optional maximum dataset size to include in plots"
     echo "  linear_fit: Optional flag (1 or 0) to enable/disable linear fitting"
+    echo "  log_scale: Optional flag (1 or 0) to enable/disable log scale on y-axis"
     exit 1
 fi
 
@@ -13,6 +14,7 @@ INPUT_FILE=$1
 STRATEGY_FILTER_FILE=$2
 MAX_SIZE=$3
 LINEAR_FIT=${4:-0}  # Default to 0 (no linear fit)
+LOG_SCALE=${5:-0}   # Default to 0 (no log scale)
 
 # Create a temporary directory for processed data
 TEMP_DIR="tmp"
@@ -25,7 +27,7 @@ grep -o "\[.*\] ran for .* secs" --text "$INPUT_FILE" | while read -r line; do
     strategy=$(echo "$line" | grep -o "\[[^]]*\]" | head -n2 | tail -n1 | tr -d '[]')
 
     # Extract strategy base name by removing the last token after hyphen
-    strategy_base=$(echo "$strategy" | sed 's/-[^-]*$//')
+    strategy_base=$(echo "$strategy") #| sed 's/-[^-]*$//')
 
     size=$(echo "$line" | grep -o "\[[^]]*\]" | tail -n1 | tr -d '[]')
     time=$(echo "$line" | grep -o "ran for [0-9.]*" | cut -d' ' -f3)
@@ -79,7 +81,13 @@ do for [i=1:n_datasets] {
     set title dataset
     
     set datafile missing "NaN"
-    #set key top left
+    set key top left
+    
+    # Set log scale if enabled
+    if ($LOG_SCALE == 1) {
+        set logscale y
+        set format y "10^{%L}"
+    }
     
     # Create a plot with a line for each strategy
     if ($LINEAR_FIT == 1) {

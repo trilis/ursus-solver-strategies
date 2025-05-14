@@ -17,4 +17,4 @@ The interactive theorem prover Coq is widely used in many works on formal softwa
 ./run_experiments.sh
 ```
 
-Can only be ran after installing Ursus internal libraries. They can be provided per request pre-installed in Docker container. Please change `JOBS` variable in `run_experiments.sh` to fit your computing configuration.
+Can only be ran after installing Ursus internal libraries. They can be provided per request pre-installed in Docker container. Please change `JOBS` and `PROOF_JOBS` variables in `run_experiments.sh` to fit your computing configuration.

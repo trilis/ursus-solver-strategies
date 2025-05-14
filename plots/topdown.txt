@@ -1,5 +1,2 @@
 topdown-lazy
-topdown-contractions-typebased-lazy
-topdown-contractions-strong-typebased-lazy
-topdown-contractions-lazy
-topdown-contractions-strong-lazy
+topdown-cbv

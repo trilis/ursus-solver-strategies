@@ -10,7 +10,7 @@ Module ContractTactics (WL: WithLedger).
 Import WL.
 
 Ltac compute_destructed_ledgers := let Ledger' := eval cbv delta [Ledger] in Ledger in compute_destructed_ledgers' Ledger'.
-Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_; elpi sort_vars -1.
+Ltac prepare ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_.
 Ltac prepare_ifs ll P loc_ := prepare_all ll P; compute_destructed_ledgers loc_;
   match goal with 
     | |- _ = ?y => remember y as P eqn:HeqP; lazy in HeqP; subst P

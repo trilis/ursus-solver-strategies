@@ -16,7 +16,27 @@ Record Contract := {
     m_modulo: uint64;
     m_current_power: uint64;
     m_hash: uint64;
-    m_should_exit: bool
+    m_should_exit: bool;
+    m_unused1: uint64;
+    m_unused2: uint64;
+    m_unused3: uint64;
+    m_unused4: uint64;
+    m_unused5: uint64;
+    m_unused6: uint64;
+    m_unused7: uint64;
+    m_unused8: uint64;
+    m_unused9: uint64;
+    m_unused10: uint64;
+    m_unused11: uint64;
+    m_unused12: uint64;
+    m_unused13: uint64;
+    m_unused14: uint64;
+    m_unused15: uint64;
+    m_unused16: uint64;
+    m_unused17: uint64;
+    m_unused18: uint64;
+    m_unused19: uint64;
+    m_unused20: uint64
 }.
 SetUrsusOptions.
 

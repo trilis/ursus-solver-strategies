@@ -16,9 +16,8 @@ Functions*.v
 res.log
 .DS_Store
 pwd.tmp
-output.txt
-output copy.txt
-plots/output.txt
+output*.txt
+plots/output*.txt
 *.png
 *.dot
 *.svg
