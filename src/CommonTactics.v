@@ -409,4 +409,46 @@ Ltac topdown_contractions_cbv := contractions; topdown_cbv'; cbv; auto.
 Ltac topdown_contractions_strong_lazy := contractions_strong; topdown_lazy'; lazy; auto.
 Ltac topdown_contractions_strong_cbv := contractions_strong; topdown_cbv'; cbv; auto.
 
+Ltac fast_solver := native_contractions_strong_typebased_lazy.
+
+Ltac process_message_flags := let Ledger' := eval cbv delta [Ledger] in Ledger in process_message_flags' Ledger'.
+Ltac solve_full_error := let Ledger' := eval cbv delta [Ledger] in Ledger in solve_full_error' Ledger'.
+Ltac try_auto_pure := let Ledger' := eval cbv delta [Ledger] in Ledger in try_auto_pure' Ledger'.
+
+(* rewrite abtract tactic declared in CommonTactics *)
+Ltac equalify_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in equalify_arguments' Ledger'.
+Ltac unify_condition := let Ledger' := eval cbv delta [Ledger] in Ledger in unify_condition' Ledger'.
+Ltac equalify_particular_arguments := let Ledger' := eval cbv delta [Ledger] in Ledger in equalify_particular_arguments' Ledger'.
+Ltac find_destructed_ledger_subst_compute := let Ledger' := eval cbv delta [Ledger] in Ledger in find_destructed_ledger_subst_compute' Ledger'.
+(* Ltac process_wellformed := let Ledger' := eval cbv delta [Ledger] in Ledger in process_wellformed' Ledger'. *)
+
+Ltac process_multiexists := let Ledger' := eval cbv delta [Ledger] in Ledger in process_multiexists' Ledger'.
+
 End ContractTactics.
+
+Tactic Notation "subst_needed" "in" hyp(H) :=
+  idtac "substing needed in" H;
+  repeat match reverse goal with
+    | H' : ?y = _ |- _ =>
+        match goal with
+        | H'' : ?x |- _ =>
+            match H'' with
+            | H =>
+                lazymatch H' with
+                | H => fail
+                | _ => match x with
+                      | context [y] =>
+                          subst y
+                      end
+                end
+            end
+        end
+    end.
+
+Ltac subst_needed :=
+  idtac "substing needed in goal";
+  clear_unneeded_hyps;
+  repeat match reverse goal with
+    | H : ?y = _ |- context [?y] =>
+        subst y
+    end.
